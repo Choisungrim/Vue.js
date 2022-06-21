@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Vue Template_Mstache Javascript Expression **</title>
+</head>
+<body>
+<!-- <div id="app" v-once> -->
+<div id="app">
+    <h2>** Vue Template_Mstache Javascript Expression **</h2>
+    {{ message }} <br>
+    => v-once 가 있으면 자동 갱신 되지않음<br>
+    {{ message + "하하하"}} <br>
+    {{ true ? 100 : 0}} <br>
+    {{ reverseMessage }}
+
+</div><hr>
+<pre>
+    {{ message }}
+    => 인스턴스 유효 범위를 벗어남  
+    => Vue 변수는 mustache(머스테스, 콧수염) 표기로 표현 {{ .. }}  
+    => mustache(콧수염) 표기내에서는 JS 문법사용가능 (단, 2가지 주의사항)
+        - JS 선언문과 분기문은 사용 금지 : 오류로 실행중지됨 
+        - 복잡한 연산은 인스턴스내에서 처리하고 화면에는 간단한 결과만 표시
+</pre>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>   
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+new Vue({
+    el:'#app',
+    data : {
+    message : "hello Vue.js !?%"
+    },
+    computed:{
+        reverseMessage:function(){
+            return this.message.split('').reverse().join('');
+        }
+    },
+    mounted() {
+        console.log('before => '+this.message)
+        this.message='**message Update Test**'
+        console.log('after => '+this.message)
+    },
+});   
+
+</script>
+</body>
+</html>
