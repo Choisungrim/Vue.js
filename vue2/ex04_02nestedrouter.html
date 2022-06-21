@@ -11,6 +11,7 @@
 		<p>
 		<router-view></router-view>
 	</div>
+    <hr>
 	<pre>
     ** Nested Router **
     => 상위 컴포넌트 1개에 하위 컴포넌트 1개를 포함하는 계층적 구조 
@@ -43,7 +44,20 @@
     var UserPost = { template: '<p>** UserPost Component **</p>' };
     var UserProfile = { template: '<p>** UserProfile Component **</p>' };
     
-    
+    // ** 네스티드 라우팅 정의
+    // => children 속성의 path 는 "/" 없음 (주의)
+    var router = new VueRouter({
+        routes : [
+            {path:'/user',
+            component : User,
+            children:[
+                {path:'/post', component:UserPost},
+                {path:'/profile', component:UserProfile}
+            ]},
+        ],
+    })
+
+    var app = new Vue({ router }).$mount('#app');
     
     
     
