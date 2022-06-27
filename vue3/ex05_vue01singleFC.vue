@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** 싱글 파일 컴포넌트 (Single File Components) **</title>
+</head>
+<body>
+	<div id="app">
+    	* {{ message }} *<br><br> 
+      	<g-header></g-header>
+      	<g-body></g-body>
+      	<g-footer></g-footer>
+    </div>
+    <pre>
+    ** Vue 프로젝트 **
+    => cli 설치 후 생성
+    => html 형식 -> 싱글 파일 컴포넌트 형식으로 작성 후 .vue 파일로 저장
+    => vue 프로젝트의 App.vue , main.js 에 등록
+    </pre>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+ 	// ** 전역 컴포넌트 등록
+ 	Vue.component('g-header', {
+    	template:`<div><span style="font-size:1.2em;">Header</span></div>`
+    });
+    Vue.component('g-body', {
+    	template:`<div><h5>g-body</h5><ul><li><button>선택1</button></li>
+    	<li><p style="color:blue;">선택2</p></li>
+    	<li><strong>선택3</strong></li></ul></div>`
+    });
+    Vue.component('g-footer', {
+    	template:`<div><span style="font-size:1.2em;">Footer message => {{ message }}</span></div>`
+    });
+    
+/*     Vue.component('g2-component', {
+    	template:`<div><span style="font-size:1.2em;"><button>{{ message }}</button></span></div>`
+    }); */
+    
+    // 인스턴스
+    new Vue({
+    	el:'#app',
+    	data: {
+    		message: 'test 중 입니다 ...'
+    	}
+    });
+ 
+    </script>
+
+</body>
+</html>

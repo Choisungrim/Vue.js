@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** Vue Template - Data Binding **</title>
+</head>
+<body>
+	<div id="app">
+		<p v-bind:id="idA">아이디 바인딩</p>
+		<!-- <p id={{ message }}>messageTest}</p> 
+			오류 : {{ }} 와 v-bind 용도를 비교해보세요 ~~ -->
+		<p v-bind:class="classA">클래스 바인딩</p>
+		<p v-bind:style="styleA">스타일 바인딩</p>
+		<p :style="styleA">v-bind 는 생략가능 하지만 권장하지는 않음</p>
+		{{ message }}
+	</div>
+	<hr>
+	 <pre>
+    ** Vue Template **
+    => 뷰 인스턴스에서 정의한 데이터 및 로직들을 연결하여 브라우저에서 볼수있도록 HTML로 변환해주는 속성 
+    => 템플릿 문법은 크게 데이터 바인딩과 디렉티브로 나뉨
+    => 2가지 방법 
+    	- 뷰인스턴스의 template 속성 활용방법
+    	- 싱글화일 컴포넌트체계의 template 코드 활용방법
+    
+    ** Data Binding **
+    => HTML 속성값과 뷰인스턴스 데이터를 연결
+    => 주요 문법은 {{ }} 와 v-bind 속성 이 있음
+    </pre>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data: {
+				idA: 123,
+				classA: 'container',
+				styleA: 'color: Blue',
+				message: 'Test'
+			}
+		}); //vue
+	
+	</script>
+
+</body>
+</html>

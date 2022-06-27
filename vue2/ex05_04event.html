@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** Vue Template - Event Test **</title>
+</head>
+<body>
+	<div id="app">
+		<h2>** Event, Parameter, Event객체 **</h2>
+		<button  v-on:click="eventTest">*  event Test  *</button><br><br>
+		<button  v-on:click="paramTest(123)">* parameter Test *</button><br><br>
+		<button  v-on:click="eventObject">* event객체 접근 *</button><br><br>
+	
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			methods: {
+				eventTest: function() {
+					alert('** Click Event Test **');
+				},
+				paramTest: function(num) {
+					alert('** Event Parameter Test num => '+(num*100));
+				},
+				eventObject: function(event) {
+					// 이벤트함수 (이벤트핸들러) 에서 event 매개변수를 정의하면 접근가능
+					console.log('** event => '+event);
+					console.log('** event.type => '+event.type);
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>

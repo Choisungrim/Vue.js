@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** Vue Template_Mstache Javascript Expression **</title>
+</head>
+<body>
+	<!-- <div id="app" v-once> -->
+	<div id="app">
+		<h2>** Mstache Javascript Expression **</h2>
+		
+		<p>{{ message }}</p>
+		=> v-once 가 있으면 자동 갱신 되지않음</p>
+		<p>{{ message+" 하하하" }}</p>
+		
+		<!-- <p>{{ var a=100; }}</p>   X, 선언문은 사용 불가능 --> 
+		<!--<p>{{  if (true) {return 100;}  }}</p>
+		 X Error: avoid using JavaScript keyword as property name: "if" -->
+		<p>{{  true ? 100 : 0  }}</p> <!-- O, 삼항 연산자 표현 가능 -->
+		
+		<p>{{ message.split('').reverse().join('') }}</p>
+		<!-- 비권장 : 복잡한 연산은 인스턴스 안에서 수행 -->
+		<p>{{ reverseMessage }}</p>
+		<!-- 권장 : 스크립트에서 computed 속성으로 계산후 최종 값만 표현 -->
+	</div>
+	<hr>
+	<pre>
+	{{ message }}
+     => 인스턴스 유효 범위를 벗어남  
+     => Vue 변수는 mustache(머스테스, 콧수염) 표기로 표현 {{ .. }}  
+     => mustache(콧수염) 표기내에서는 JS 문법사용가능 (단, 2가지 주의사항)
+     	- JS 선언문과 분기문은 사용 금지 : 오류로 실행중지됨 
+     	- 복잡한 연산은 인스턴스내에서 처리하고 화면에는 간단한 결과만 표시
+	</pre>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data: {
+				message: 'Hello Vue.js !?&'
+			},
+			computed: {
+				reverseMessage: function() {
+					return  this.message.split('').reverse().join('');
+				}
+			},
+			mounted: function() {
+				console.log('** before update => '+this.message);
+				this.message='** message Update Test **';
+				console.log('** after update => '+this.message);
+			}
+		});
+	// *** 화살표 함수 내에서는 this 적용안됨 ***
+	</script>
+
+</body>
+</html>

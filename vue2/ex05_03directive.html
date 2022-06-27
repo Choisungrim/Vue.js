@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** Vue Template - Directives **</title>
+</head>
+<body>
+	<div id="app">
+		<p v-show="flag">v-show Test</p>
+		<p v-if="flag">v-if Test</p>
+		<ul>
+			<li  v-for="system in systems">{{ system }}</li>
+		</ul>
+		<h3 v-bind:id="uid" >Directives</h3>
+		<button  v-on:click="popupAlert">v-on:click</button>
+	</div>
+	<hr>
+	<pre>
+	<h2>** Vue Template - Directives **</h2>
+	=> 디렉티브는 Vue 로 화면의 요소를 더 쉽게 조작하기 위하여,
+	   화면 조작에서 자주 사용되는 방식들을 모아 디렉티브 형태로 제공하는것.
+	   ( v- 로 시작하고 다양한 디렉티브가 존재함. )
+	=>  v-show , v-if
+		- true 면 표시되고 false 면 표시되지않음 
+		- 둘의 차이점은 false 의 경우 if는 삭제, show는 css 효과(display:none)  
+	</pre>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data: {
+				flag: false,
+				systems: ['안드로이드', 'IOS', 'Window', '짜장면'],
+				uid: 'title'
+			},
+			methods: {
+				popupAlert: function() {
+					alert("~~~ Directive Test ~~~~");
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>

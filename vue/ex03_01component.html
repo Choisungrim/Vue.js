@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Components</title>
+</head>
+<body>
+<div id="app">
+    <h2> ** 컴포넌트 등록 TEST **</h2>
+    <g-component></g-component>
+    <l-component></l-component>
+
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+    /* 컴포넌트 등록 */
+
+    Vue.component('g-component',{
+        template : `<div>전역 컴포넌트 등록 !!</div>`
+    })
+    // ** 전역 컴포넌트 등록
+    // => Vue 생성자의 component() 함수 호출하여,
+    //    컴포넌트 이름 (html에서 사용할 Tag명) 과  내용등록
+    //    ( 내용에는 template, data, methods 등 여러 속성가능 ) 
+    // => 등록된 컴포넌트는 Vue 유효 영역에서 사용가능 
+    
+    /* 인스턴스 생성
+    new Vue({
+        el : '#app'
+    })
+
+    // ** 지역 컴포넌트 등록
+    // => 인스턴스 생성자의 components 속성에 이름과 내용 등록
+
+    /* 지역 컴포넌트와 인스턴스 동시생성
+    new Vue({
+        el:'#app',
+        components:{
+            'l-component':{
+                // 컴포넌트 내용 등록
+                template:`<div>지역 컴포넌트 등록 </div>`
+            }
+        }//components
+    })*/
+
+    /* 변수 활용 */
+    var cmp = {
+        template:`<div>지역 컴포넌트 등록 </div>`
+    };
+
+    new Vue({
+        el : '#app',
+        components : {
+            'l-component' : cmp,
+        },
+    })
+
+
+
+    </script>
+</body>
+</html>

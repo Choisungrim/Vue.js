@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** Vue Named View Test **</title>
+</head>
+<body>
+	<div id="app">
+		<h2>** Named View Test **</h2>
+		=> 라우팅 영역 정의<br>
+    	=> name 이 없는 경우 default<br>
+		<p>
+		<router-view name="header"></router-view>
+		<router-view></router-view>
+		<router-view name="footer"></router-view>
+	</div>
+	<hr>
+	<pre>
+    ** Named View **
+    => 특정 페이지로 이동했을 때 여러 개의 컴포넌트를 동시에 표시하는 라우팅 방식
+    => 같은 레벨에서 여러 개의 컴포넌트를 한 번에 표시함
+    </pre>
+	
+	<!--  ** 라우터 CDN 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    
+    <script>
+    // ** 컴포넌트 내용 정의
+    var Body = { template: '<div>** Body_default Component **</div>' };
+    var Header = { template: '<div>** Header Component **</div>' };
+    var Footer = { template: '<div>** Footer Component **</div>' };
+    
+ 	// ** 네임드 뷰 라우터 정의
+ 	// => 이전 예제와는 다르게 routes 속성을 직접 정의함
+ 	var router= new VueRouter({ 
+ 		routes: [
+ 			{ path:'/',
+ 			  components: { 
+ 				default: Body,
+ 				header: Header,
+ 				footer: Footer }
+ 			 }
+ 		]  
+ 	});
+ 	
+    // ** 뷰 라우터를 인스턴스에 등록
+    var app = new Vue({ router }).$mount('#app');
+    
+    </script>
+	
+
+</body>
+</html>

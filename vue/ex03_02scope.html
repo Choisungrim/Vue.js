@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Global / Local scope **</title>
+</head>
+<body>
+    <div id="app1">
+        <h2> 컴포넌트 등록 TEst => app1 </h2>
+        <g-component></g-component>
+        <l-component></l-component>
+    </div>
+
+    <div id="app2">
+        <h2> 컴포넌트 등록 TEst => app2 </h2>
+        <g-component></g-component>
+        <l-component></l-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+        /* Global Component */
+        Vue.component('g-component',{
+            template:`<div> 전역 컴포넌트임니다</div>`
+        })
+
+        /* variable => app1 */
+        var cmp = {
+            template : `<div> 지역 컴포넌트 입니다. </div>`
+        }
+
+        /* Instance */
+        new Vue ({
+            el:'#app1',
+            components:{
+                'l-component' : cmp
+            }
+        })
+
+        new Vue({
+            el:'#app2',
+
+        })
+
+    </script>
+</body>
+</html>

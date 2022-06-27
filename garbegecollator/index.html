@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>garbage Collection</title>
+    <style>
+    body {
+        width: 1920px;
+        height: 937px;
+        margin: 0 auto;
+    }
+    .container{
+        width: 1920px;
+        height: 937px;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+    header {
+        width: 960px;
+        height: 176px;
+        background-color: #f9c6c6;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo {
+        width: 480px;
+        height: 80px;
+        background-color: #d9d9d9;
+    }
+    nav {
+        display: flex;
+        width: 960px;
+        height: 96px;
+        background-color: #ffffff;
+    }
+    nav .search {
+        width: 480px;
+        height: 64.5px;
+        flex-grow: 1;
+        background-color: #d9d9d9;
+    }
+    nav .hambuger {
+        width: 148px;
+        height: 96.3px;
+        background-color: #d9d9d9;
+    }
+    section {
+        width: 960px;
+        height: 577px;
+        flex-grow: 0;
+        background-color: #abfb9e;
+    }
+    section .itembox{
+        width: 960px;
+        height: 530px;
+        background-color: #abfb9e;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    section .itembox .itemrow{
+        width: 960px;
+        height: 175px;
+        background-color: #abfb9e;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 1px;
+    }
+    section .itembox .itemrow div{
+        width: 106px;
+        height: 104px;
+        background-color: #d9d9d9;
+    }
+    footer {
+        width: 960px;
+        height: 124px;
+        background-color: #f9c6c6;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+
+            </div>
+        </header>
+        <nav>
+            <div class="hambuger"></div>
+            <div class="search"></div>
+        </nav>
+        <section>
+            <div class="itembox">
+                <div class="itemrow">
+                    <div class="items01"></div>
+                    <div class="items02"></div>
+                    <div class="items03"></div>
+                    <div class="items04"></div>
+                    <div class="items05"></div>
+                </div>
+                <div class="itemrow">
+                    <div class="items06"></div>
+                    <div class="items07"></div>
+                    <div class="items08"></div>
+                    <div class="items09"></div>
+                    <div class="items10"></div>
+                </div>
+                <div class="itemrow">
+                    <div class="items11"></div>
+                    <div class="items12"></div>
+                    <div class="items13"></div>
+                    <div class="items14"></div>
+                    <div class="items15"></div>
+                </div>
+            </div>
+        </section>
+        <footer></footer>
+    </div>
+</body>
+</html>

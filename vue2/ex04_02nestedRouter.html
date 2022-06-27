@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** Vue Nested Router **</title>
+</head>
+<body>
+	<div id="app">
+		<h2>** Vue Nested Router **</h2>
+		=> User 컴포넌트가 뿌려질 영역 정의<br>
+		<p>
+		<router-view></router-view>
+	</div>
+	<hr>
+	<pre>
+    ** Nested Router **
+    => 상위 컴포넌트 1개에 하위 컴포넌트 1개를 포함하는 계층적 구조 
+    => 최상위(Root) 컴포넌트에도 router-view 가 있고, 
+       최상위 컴포넌트의 하위 컴포넌트에도 router-view 가 있음.
+    => 컴포넌트 수가 적을때는 유용하지만 한번에 더많은 컴포넌트를 표시하는데는 한계가 있음.
+    
+    => 라우터로 페이지 이동시, 최소 2개 이상의 컴포넌트에서 선택적으로 화면에 나타낼 수 있음.
+    </pre>
+	
+	<!--  ** 라우터 CDN 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    
+    <script>
+    // ** 실습
+    // => User 컴포넌트를 상위 컴포넌트로 두고, 
+    //    url에 따라 UserPost 컴포넌트와 UserProfile 컴포넌트를 표시한다.
+    // => 실행시 
+    //    - url 에 /user 를 추가 : User Component 표시됨
+    //	  - url 에 /post  추가 :  User Post Component 표시됨
+    //	  - url 에 /profile  추가 : User Profile Component 표시됨 
+    
+    // ** 하위 컴포넌트가 뿌려질 영역을 가지고 있는 User 컴포넌트 정의
+    var User = {
+    		template:`<div> <h3>** User Component **</h3>
+    						<router-view></router-view> 
+    					</div>`
+    } ;
+    
+    var UserPost = { template: '<p>** UserPost Component **</p>' };
+    var UserProfile = { template: '<p>** UserProfile Component **</p>' };
+    
+ 	// ** 네스티드 라우팅 정의
+ 	// => children 속성의 path 는 "/" 없음 (주의)
+    var routes = [
+    	{	path:'/user',
+    		component: User,
+    		children: [
+    			{ path:'post', component:UserPost },
+    			{ path:'profile', component:UserProfile }
+    		]     		
+    	} // user
+    ]; //routes
+ 	
+ 	// ** 뷰 라우터 정의
+ 	var router= new VueRouter({ routes });
+    
+    // ** 뷰 라우터를 인스턴스에 등록
+    var app = new Vue({ router }).$mount('#app');
+    
+    </script>
+	
+
+</body>
+</html>
